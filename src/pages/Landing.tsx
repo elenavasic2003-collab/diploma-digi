@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, ShieldCheck, Building2, ArrowRight } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import teamHero from "@/assets/team-hero.jpg";
+import ivonaImg from "@/assets/ivona.jpg";
+import elenaImg from "@/assets/elena.jpg";
+import tamaraImg from "@/assets/tamara.jpg";
+
+const teamMembers = [
+  { name: "Ivona Ćitić", image: ivonaImg, initials: "IĆ" },
+  { name: "Elena Vasić", image: elenaImg, initials: "EV" },
+  { name: "Tamara Beatović", image: tamaraImg, initials: "TB" },
+];
 
 export default function Landing() {
   return (
@@ -18,7 +29,7 @@ export default function Landing() {
         </div>
       </header>
 
-      <main className="flex-1 flex items-center">
+      <main className="flex-1">
         <div className="container py-20">
           <div className="max-w-2xl mx-auto text-center mb-16">
             <h1 className="text-4xl font-bold tracking-tight text-foreground mb-4">
@@ -32,7 +43,7 @@ export default function Landing() {
             </Button>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-20">
             {[
               { icon: GraduationCap, title: "Studenti", desc: "Podnesite zahtev za verifikaciju i pristupite svojoj digitalnoj diplomi." },
               { icon: ShieldCheck, title: "Institucije", desc: "Pregledajte zahteve, izdajte verifikovane diplome i kontrolišite pristup." },
@@ -44,6 +55,32 @@ export default function Landing() {
                 <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* Hero image */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <img
+              src={teamHero}
+              alt="Digitalna verifikacija diploma ilustracija"
+              className="w-full rounded-xl shadow-lg object-cover max-h-80"
+            />
+          </div>
+
+          {/* Team section */}
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl font-bold text-foreground mb-2">Naš tim</h2>
+            <p className="text-muted-foreground mb-10">Upoznajte ljude iza DigiDiploma Verify platforme.</p>
+            <div className="flex justify-center gap-12 flex-wrap">
+              {teamMembers.map((member) => (
+                <div key={member.name} className="flex flex-col items-center gap-3">
+                  <Avatar className="h-24 w-24 border-2 border-primary/20">
+                    <AvatarImage src={member.image} alt={member.name} />
+                    <AvatarFallback className="text-lg font-semibold">{member.initials}</AvatarFallback>
+                  </Avatar>
+                  <span className="font-medium text-foreground">{member.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </main>
