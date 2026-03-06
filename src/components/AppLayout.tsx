@@ -1,7 +1,7 @@
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, LogOut, LayoutDashboard, FileText, Award, Building2, Search, ShieldCheck } from "lucide-react";
+import { GraduationCap, LogOut, LayoutDashboard, FileText, Award, Building2, Search, ShieldCheck, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const studentLinks = [
@@ -26,7 +26,9 @@ const businessLinks = [
 export function AppLayout() {
   const { profile, signOut } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
 
+  const isOnDashboard = location.pathname === "/dashboard";
   const links = profile?.role === "student" ? studentLinks : profile?.role === "institution" ? institutionLinks : businessLinks;
 
   return (
@@ -61,6 +63,12 @@ export function AppLayout() {
         </div>
       </header>
       <main className="flex-1 container py-6">
+        {!isOnDashboard && (
+          <Button variant="ghost" size="sm" className="mb-4 text-muted-foreground" onClick={() => navigate("/dashboard")}>
+            <ArrowLeft className="h-4 w-4 mr-1" />
+            Nazad na pregled
+          </Button>
+        )}
         <Outlet />
       </main>
     </div>
