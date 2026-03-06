@@ -1,7 +1,7 @@
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, LogOut, LayoutDashboard, FileText, Award, Building2, Search, ShieldCheck } from "lucide-react";
+import { GraduationCap, LogOut, LayoutDashboard, FileText, Award, Building2, Search, ShieldCheck, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const studentLinks = [
