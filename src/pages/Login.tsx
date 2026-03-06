@@ -28,7 +28,12 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-background px-4">
+      <div className="w-full max-w-md mb-4">
+        <Button variant="ghost" size="sm" className="text-muted-foreground" asChild>
+          <Link to="/"><ArrowLeft className="h-4 w-4 mr-1" />Nazad na početnu</Link>
+        </Button>
+      </div>
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-2"><GraduationCap className="h-8 w-8 text-primary" /></div>
