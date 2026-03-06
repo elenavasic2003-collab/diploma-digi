@@ -26,7 +26,9 @@ const businessLinks = [
 export function AppLayout() {
   const { profile, signOut } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
 
+  const isOnDashboard = location.pathname === "/dashboard";
   const links = profile?.role === "student" ? studentLinks : profile?.role === "institution" ? institutionLinks : businessLinks;
 
   return (
