@@ -63,6 +63,12 @@ export function AppLayout() {
         </div>
       </header>
       <main className="flex-1 container py-6">
+        {!isOnDashboard && (
+          <Button variant="ghost" size="sm" className="mb-4 text-muted-foreground" onClick={() => navigate("/dashboard")}>
+            <ArrowLeft className="h-4 w-4 mr-1" />
+            Nazad na pregled
+          </Button>
+        )}
         <Outlet />
       </main>
     </div>
